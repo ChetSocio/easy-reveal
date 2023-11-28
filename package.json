@@ -1,0 +1,77 @@
+{
+  "name": "easy-reveal",
+  "version": "1.0.0",
+  "description": "React package with nextjs-14 support to add transitions and animations in your web project",
+  "main": "./index.js",
+  "scripts": {
+    "build": "gulp build",
+    "test": "jest .",
+    "prepare": "npm run build",
+    "clean": "gulp clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChetSocio/easy-reveal.git"
+  },
+  "keywords": [
+    "react",
+    "reveal",
+    "easy-reveal",
+    "transitions",
+    "animations",
+    "page",
+    "animations"
+  ],
+  "author": "Chetraj Gautam <chetrajdevops@batchnepal.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChetSocio/easy-reveal/issues"
+  },
+  "homepage": "https://github.com/ChetSocio/easy-reveal#readme",
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.3",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-json-strings": "^7.18.6",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-syntax-import-meta": "^7.10.4",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-stage-3": "^7.8.3",
+    "@babel/register": "^7.22.15",
+    "@types/react": "^17.0.0 || ^18.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-flatten": "^0.4.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-uglify": "^3.0.2",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-test-renderer": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@emotion/react": {
+      "optional": true
+    },
+    "@emotion/styled": {
+      "optional": true
+    }
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-plugin-add-module-exports": "^1.0.4"
+  }
+}

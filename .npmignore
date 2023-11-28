@@ -1,0 +1,7 @@
+.babelrc
+.gitignore
+.git
+gulpfile.js
+npm-debug.log
+node_modules
+__tests__
