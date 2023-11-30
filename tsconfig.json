@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "declaration": true
+    // ... other compiler options
+  },
+  "include": ["index.d.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

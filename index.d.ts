@@ -4,20 +4,17 @@
 
 import * as React from 'react';
 
-export * as Wrap from './wrap';
+export { default as Wrap} from './wrap';
 export * from './wrap';
 
-export {default  as Hamburger } from './hamburger';
-export * from './hamburger';
+export {default  as Hamburger } from './src/lib/hamburger';
+export * from './src/lib/hamburger';
 
 export {default as Bounce} from './Bounce';
 export * from './Bounce';
 
 export {default as Fade} from './Fade';
 export * from './Fade';
-
-export {default as Jello} from './Jello';
-export * from './Jello';
 
 export {default as Jump} from './Jump';
 export * from './Jump';
