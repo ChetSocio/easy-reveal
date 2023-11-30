@@ -1,7 +1,7 @@
 /*
  * HamburgerIcon Component Service For react-reveal
  *
- * Copyright © Roman Nosov 2017
+ * Copyright © Chetraj Gautam 2023
  * SVG animation adapted from https://codepen.io/cwmanning/pen/zaCHB
  *
  * This source code is licensed under the MIT license found in the
@@ -10,8 +10,8 @@
 
 import React from 'react';
 
-function HamburgerIcon( toggle, animation, handleClick,
-  { color = '#fff', size = 28, style,  ...props} = { color: '#fff', size: 28, style: { backgroundColor: '#808080' }} ) {
+function HamburgerIcon(toggle, animation, handleClick,
+  { color = '#fff', size = 28, style, ...props } = { color: '#fff', size: 28, style: { backgroundColor: '#808080' } }) {
   const
     common = { opacity: 1, stroke: color, transition: 'transform 0.3s' },
     flip = `
@@ -33,10 +33,10 @@ function HamburgerIcon( toggle, animation, handleClick,
       animationDuration: !toggle ? void 0 : '900ms',
       animationFillMode: !toggle ? void 0 : 'forwards',
     },
-    a = { ...common, transform: !toggle?void 0:'translate(0, 7px)' },
-    b = { ...common, transform: !toggle?'rotate(0deg)':'translate(20px, -4px) rotate(90deg)' },
-    c = { ...common, transform: !toggle?void 0:'translate(0, -7px)' };
-    //viewBox="0 0 24 16"
+    a = { ...common, transform: !toggle ? void 0 : 'translate(0, 7px)' },
+    b = { ...common, transform: !toggle ? 'rotate(0deg)' : 'translate(20px, -4px) rotate(90deg)' },
+    c = { ...common, transform: !toggle ? void 0 : 'translate(0, -7px)' };
+  //viewBox="0 0 24 16"
   return (
     <div style={{ ...style, width: size, height: size }} {...props} onClick={handleClick}>
       <svg style={hamburger} width={size} height={size} id="hamburger" viewBox="-4 0 32 16">

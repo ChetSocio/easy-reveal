@@ -1,7 +1,7 @@
 /*
  * Stepper Auxiliary Class
  *
- * Copyright © Roman Nosov 2017
+ * Copyright © Chetraj Gautam 2023
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
@@ -31,26 +31,26 @@ class Stepper {
 	}
 
 	//if (process.env.NODE_ENV !== 'production')
-//	throw new Error(`Animation step ${name} is missing`);
-//else {
-//}
+	//	throw new Error(`Animation step ${name} is missing`);
+	//else {
+	//}
 	is(name) {
 		return this.get(name);
 	}
 
-  get(name) {
-    if (name in this.stepMap)//.hasOwnProperty(name))
-      return this.stepMap[name];
-    else console.warn(`Animation step ${name} is missing`);
-  }
+	get(name) {
+		if (name in this.stepMap)//.hasOwnProperty(name))
+			return this.stepMap[name];
+		else console.warn(`Animation step ${name} is missing`);
+	}
 
 
 	start(step) {
 		if (this.hasStarted) {
 			this.runs = 2;
 		}
-		if(this.isTriggered) {
-			if ( step < this.trigger )
+		if (this.isTriggered) {
+			if (step < this.trigger)
 				this.trigger = step;
 			return;
 		}
@@ -62,8 +62,8 @@ class Stepper {
 	init() {
 		this.hasStarted = true;
 		this.head = this.trigger;
-    this.tail = this.head === 0 ? this.steps.length - 1 : this.head - 1;
-    this.next();
+		this.tail = this.head === 0 ? this.steps.length - 1 : this.head - 1;
+		this.next();
 	}
 
 	stop() {
@@ -75,7 +75,7 @@ class Stepper {
 		let onceRevealed = false;
 		for (let i = 0, len = this.steps[this.head].chain.length; i < len; i++) {
 			const api = this.steps[this.head].chain[i];
-			if (!api.isShown&&api.start&&api.inViewport()) {
+			if (!api.isShown && api.start && api.inViewport()) {
 				onceRevealed = true;
 				delete api.start;
 				api.animate(api.props);
@@ -84,7 +84,7 @@ class Stepper {
 		if (this.head === this.tail) {
 			this.runs--;
 			this.totalRuns++;
-			if (this.totalRuns>100)
+			if (this.totalRuns > 100)
 				return;
 			if (this.runs <= 0)
 				return this.stop();

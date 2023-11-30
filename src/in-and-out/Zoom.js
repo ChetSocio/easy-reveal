@@ -1,7 +1,7 @@
 /*
  * Zoom React Component
  *
- * Copyright © Roman Nosov 2017
+ * Copyright © Chetraj Gautam 2023
  * Original CSS Effect - Copyright (c) 2016 Daniel Eden
  *
  * This source code is licensed under the MIT license found in the
@@ -30,10 +30,10 @@ const
 
 const lookup = {};
 function make(reverse, { left, right, up, down, top, bottom, mirror, opposite, }) {
-  const checksum = (left?1:0) | (right?2:0) | (top||down?4:0) | (bottom||up?8:0) | (mirror?16:0) | (opposite?32:0) | (reverse?64:0);
+  const checksum = (left ? 1 : 0) | (right ? 2 : 0) | (top || down ? 4 : 0) | (bottom || up ? 8 : 0) | (mirror ? 16 : 0) | (opposite ? 32 : 0) | (reverse ? 64 : 0);
   if (lookup.hasOwnProperty(checksum))
     return lookup[checksum];
-  if ( !mirror !== !(reverse&&opposite)) // Boolean XOR
+  if (!mirror !== !(reverse && opposite)) // Boolean XOR
     [left, right, top, bottom, up, down] = [right, left, bottom, top, down, up];
   const
     transformX = left || right,
@@ -42,26 +42,26 @@ function make(reverse, { left, right, up, down, top, bottom, mirror, opposite, }
   let rule, x1, y1, x2, y2;
   if (transform) {
     if (reverse) {
-      x1 = transformX ? ( left       ? '' : '-' ) + '42px' : '0';
-      y1 = transformY ? ( down||top  ? '-' : '' ) + '60px' : '0';
-      x2 = transformX ? ( right      ? '' : '-' ) + '2000px'   : '0';
-      y2 = transformY ? ( up||bottom ? '' : '-' ) + '2000px'   : '0';
-      rule =`40% {
+      x1 = transformX ? (left ? '' : '-') + '42px' : '0';
+      y1 = transformY ? (down || top ? '-' : '') + '60px' : '0';
+      x2 = transformX ? (right ? '' : '-') + '2000px' : '0';
+      y2 = transformY ? (up || bottom ? '' : '-') + '2000px' : '0';
+      rule = `40% {
           opacity: 1;
           transform: scale3d(.475, .475, .475) translate3d(${x1}, ${y1}, 0);
         }
         to {
           opacity: 0;
           transform: scale(.1) translate3d(${x2}, ${y2}, 0);
-          transform-origin: ${transformY ? `center bottom` : `${left?'left':'right'} center`};
+          transform-origin: ${transformY ? `center bottom` : `${left ? 'left' : 'right'} center`};
         }`;
     }
     else {
-      x1 = transformX ? ( left       ? '-' : '' ) + '1000px' : '0';
-      y1 = transformY ? ( down||top  ? '-' : '' ) + '1000px' : '0';
-      x2 = transformX ? ( right      ? '-' : '' ) + '10px'   : '0';
-      y2 = transformY ? ( up||bottom ? '-' : '' ) + '60px'   : '0';
-      rule =`from {
+      x1 = transformX ? (left ? '-' : '') + '1000px' : '0';
+      y1 = transformY ? (down || top ? '-' : '') + '1000px' : '0';
+      x2 = transformX ? (right ? '-' : '') + '10px' : '0';
+      y2 = transformY ? (up || bottom ? '-' : '') + '60px' : '0';
+      rule = `from {
           opacity: 0;
           transform: scale3d(.1, .1, .1) translate3d(${x1}, ${y1}, 0);
           animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
@@ -74,13 +74,13 @@ function make(reverse, { left, right, up, down, top, bottom, mirror, opposite, }
     }
   }
   else
-    rule = `${!reverse?'from':'to'} {opacity: 0; transform: scale3d(.1, .1, .1);} ${reverse?'from':'to'} { opacity: 1; transform: none;}`;
+    rule = `${!reverse ? 'from' : 'to'} {opacity: 0; transform: scale3d(.1, .1, .1);} ${reverse ? 'from' : 'to'} { opacity: 1; transform: none;}`;
   lookup[checksum] = animation(rule);
   return lookup[checksum];
 }
 
 function Zoom({ children, out, forever,
-              timeout, duration = defaults.duration, delay = defaults.delay, count = defaults.count, ...props } = defaults) {
+  timeout, duration = defaults.duration, delay = defaults.delay, count = defaults.count, ...props } = defaults) {
   const effect = {
     make,
     duration: timeout === undefined ? duration : timeout,

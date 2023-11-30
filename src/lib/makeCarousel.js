@@ -1,14 +1,14 @@
 /*
  * makeCarousel Higher Order Component For react-reveal
  *
- * Copyright © Roman Nosov 2017
+ * Copyright © Chetraj Gautam 2023
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
 
 import React from 'react';
-import { number, node, bool} from 'prop-types';
+import { number, node, bool } from 'prop-types';
 import swipedetect from './swipedetect';
 
 function makeCarousel(WrappedComponent, config = {}) {
@@ -51,7 +51,7 @@ function makeCarousel(WrappedComponent, config = {}) {
       this.target = this.target.bind(this);
     }
 
-    target({currentTarget}) {
+    target({ currentTarget }) {
       this.move(+currentTarget.getAttribute('data-position'));
     }
 
@@ -66,7 +66,7 @@ function makeCarousel(WrappedComponent, config = {}) {
     }
 
     move(newPos) {
-      if (this.turn<0 || newPos === this.state.current)
+      if (this.turn < 0 || newPos === this.state.current)
         return;
       let pos = newPos;
       const count = React.Children.count(this.props.children);
@@ -75,11 +75,11 @@ function makeCarousel(WrappedComponent, config = {}) {
         pos = 0;
       }
       else if (newPos < 0)
-        pos = count -1;
+        pos = count - 1;
       this.setState({
         current: pos,
         next: this.state.current,
-        backwards: newPos<this.state.current,
+        backwards: newPos < this.state.current,
         swap: !this.state.swap,
         appear: true,
       });
@@ -96,8 +96,8 @@ function makeCarousel(WrappedComponent, config = {}) {
 
     componentDidMount() {
       if (this.beforeNode && this.afterNode) {
-        swipedetect(this.beforeNode, this.handleSwipe );
-        swipedetect(this.afterNode, this.handleSwipe );
+        swipedetect(this.beforeNode, this.handleSwipe);
+        swipedetect(this.afterNode, this.handleSwipe);
       }
     }
 
@@ -107,18 +107,18 @@ function makeCarousel(WrappedComponent, config = {}) {
         count = arr.length;
       let { swap, next, current, backwards } = this.state;
       current %= count; next %= count;
-      let before, after ;
+      let before, after;
 
       switch (count) {
         case 0:
           before = <div />;
-          after  = <div />;
+          after = <div />;
         case 1:
           before = arr[0];
-          after  = arr[0];
+          after = arr[0];
         default:
           before = arr[swap ? next : current];
-          after  = arr[swap ? current : next];
+          after = arr[swap ? current : next];
       }
 
       if (typeof before !== 'object')
@@ -133,7 +133,7 @@ function makeCarousel(WrappedComponent, config = {}) {
           handleClick={this.target}
           total={count}
           children={[
-            <div ref={ node => this.beforeNode = node } key={1} style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', zIndex: swap ? 1 : 2 }}>
+            <div ref={node => this.beforeNode = node} key={1} style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', zIndex: swap ? 1 : 2 }}>
               <before.type
                 //disableObserver
                 //force
@@ -148,7 +148,7 @@ function makeCarousel(WrappedComponent, config = {}) {
                 onReveal={!swap/*&&!this.stop*/ ? this.handleReveal : void 0}
               />
             </div>,
-            <div key={2} ref={ node => this.afterNode = node } style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', zIndex: swap ? 2 : 1 }}>
+            <div key={2} ref={node => this.afterNode = node} style={{ position: 'absolute', left: 0, top: 0, width: '100%', height: '100%', zIndex: swap ? 2 : 1 }}>
               <after.type
                 //disableObserver
                 //force

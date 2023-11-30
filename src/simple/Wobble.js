@@ -1,7 +1,7 @@
 /*
  * Wobble React Component
  *
- * Copyright © Roman Nosov 2017
+ * Copyright © Chetraj Gautam 2023
  * Original CSS Effect - Copyright (c) 2016 Daniel Eden
  *
  * This source code is licensed under the MIT license found in the

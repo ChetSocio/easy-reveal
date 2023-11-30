@@ -1,7 +1,7 @@
 /*
  * withReveal Auxiliary Function For Making react-reveal Higher Order Components
  *
- * Copyright © Roman Nosov 2017
+ * Copyright © Chetraj Gautam 2023
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
@@ -13,7 +13,7 @@ function withReveal(WrappedComponent, effect) {
   let refProp = undefined;
   if (typeof WrappedComponent === 'function' && typeof WrappedComponent.styledComponentId === 'string')
     refProp = "innerRef";
-  return function({
+  return function ({
     force,
     mountOnEnter,
     unmountOnExit,

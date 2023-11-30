@@ -1,7 +1,7 @@
 /*
  * responsive Higher Order Component For react-reveal
  *
- * Copyright © Roman Nosov 2017
+ * Copyright © Chetraj Gautam 2023
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
@@ -10,9 +10,9 @@
 import React from 'react';
 import withReveal from './withReveal';
 
-function responsive( WrappedComponent, {effect, breakpoint = '768px', ...rest } = { breakpoint: '768px' } ) {
+function responsive(WrappedComponent, { effect, breakpoint = '768px', ...rest } = { breakpoint: '768px' }) {
 
-  const RevealedComponent =  withReveal(WrappedComponent, effect);
+  const RevealedComponent = withReveal(WrappedComponent, effect);
 
   return class extends React.Component {
 
@@ -22,7 +22,7 @@ function responsive( WrappedComponent, {effect, breakpoint = '768px', ...rest } 
       this.handleChange = this.handleChange.bind(this);
       this.handleClick = this.handleClick.bind(this);
       this.state = {
-        match : true,
+        match: true,
         isClicked: false,
       };
     }
@@ -69,7 +69,7 @@ function responsive( WrappedComponent, {effect, breakpoint = '768px', ...rest } 
           toggle={this.handleClick}
           isToggled={this.state.isClicked}
           collapse={!this.state.match}
-          disabled={this.props.disableAboveBreakpoint&&this.state.match}
+          disabled={this.props.disableAboveBreakpoint && this.state.match}
           when={this.state.match || this.state.isClicked}
           collapseOnly={!this.state.match}
         />

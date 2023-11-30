@@ -1,7 +1,7 @@
 /*
  * HeadShake React Component
  *
- * Copyright © Roman Nosov 2017
+ * Copyright © Chetraj Gautam 2023
  * Original CSS Effect - Copyright (c) 2016 Daniel Eden
  *
  * This source code is licensed under the MIT license found in the
@@ -54,7 +54,7 @@ function make() {
 
 
 function HeadShake({ children, out, timeout, duration = defaults.duration, delay = defaults.delay, count = defaults.count, forever, ...props } = defaults) {
-  const effect = { make, duration: timeout === undefined ? duration : timeout, delay, forever, count, style: { animationFillMode: 'both', } };  return wrap(props, effect, false, children, true);
+  const effect = { make, duration: timeout === undefined ? duration : timeout, delay, forever, count, style: { animationFillMode: 'both', } }; return wrap(props, effect, false, children, true);
 }
 
 
