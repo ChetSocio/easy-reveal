@@ -17,8 +17,6 @@ interface BounceProps {
 }
 
 
-declare class Bounce extends React.Component<BounceProps> {
-  render(): JSX.Element;
-}
+declare const Bounce: React.Component<BounceProps>
 
 export default Bounce;

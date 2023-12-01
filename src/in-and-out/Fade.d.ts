@@ -15,10 +15,11 @@ interface FadeProps  {
   delay?: number,
   count?: number,
   forever?: boolean,
+  children: React.ReactNode;
 }
 
 
-declare class Fade extends React.Component<FadeProps> {
+declare class Fade extends React.FC<FadeProps> {
 
   render(): JSX.Element;
 }
