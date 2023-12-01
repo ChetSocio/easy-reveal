@@ -1,9 +1,9 @@
-# Easy-Reveal ! (In Beta ! Not ready for production)
+# Easy-Reveal ! (In Beta 🚀🚀)
 
-This package will be live soon. Please wait till then. Weare testing its compatibility with
- nextjs and typescript for now. 
+This package will be live soon. Please wait till then. We are still testing its compatibility with
+ nextjs and typescript for now.  But you can play it it and raise issues in github 😊
 
-Easy reveal is the updated (by Chetraj Gautam) version of react-reveal package and is an animation framework for React. It's MIT licensed, has a tiny footprint and written specifically for React in ES5. It can be used to create various cool reveal on scroll animations in your application. If you liked this package, don't forget to star the Github repository. 
+Easy reveal is the created & managed by Chetraj Gautam is an animation framework for React and Nextjs. It's MIT licensed, has a tiny footprint and written specifically for React in ES5. It can be used to create various cool reveal on scroll animations in your application. If you liked this package, don't forget to star the Github repository. 
 
 It also supports nextjs app directory as well as React 18
 
@@ -29,7 +29,7 @@ npm install easy-reveal --save
 Import effects from [React Reveal](https://www.npmjs.com/package/easy-reveal) to your project. Lets try `Zoom` effect first:
 
 ```javascript
-import Zoom from 'easy-reveal/Zoom';
+import Zoom from 'easy-reveal';
 ```
 
 Place the following code somewhere in your `render` method: 
@@ -120,23 +120,8 @@ If you don't want this to happen, you should wrap multiple children in a `div` t
 
 ## Server Side Rendering
 
-`easy-reveal` supports server side rendering out of the box. In some cases, when the javascript bundle arrives much later than the HTML&CSS it might cause a flickering. To prevent this `easy-reveal` will not apply reveal effects on the initial load. 
-Another option is to apply gentle fadeout effect on the initial render. You can force it on all `easy-reveal` elements by placing the following code somewhere near the entry point of your app:
-
-```jsx
-import config from 'easy-reveal/globals';
-
-config({ ssrFadeout: true });
-```
-
-Or you you can do it on a per element basis using `ssrFadeout` prop:
-
-```jsx
-<Zoom ssrFadeout><h1>Content</h1></Zoom>
-```
-
-One last option is to use `ssrReveal` prop. If enabled, this option will suppress both flickering and `ssrFadeout` effect. The unfortunate drawback of this option is that the revealed content will appear hidden to Googlebot and to anyone with javascript switched off. So it will makes sense for images and/or headings which are duplicated elsewhere on the page.
-
+`easy-reveal` supports server side rendering out of the box. Its rtested with nextjs 14 and typescript and 
+it works well out of the box. Love it? Theb give some stars in github  
 ## Forking This Package
 
 Clone the this repository using the following command:
@@ -167,4 +152,4 @@ Runs tests
 
 ## License
 
-Copyright © 2018 Roman Nosov + 2023 Chetraj Gautam (BatchNepal). Project source code is licensed under the MIT license.
+Copyright © 2023 Chetraj Gautam (CEO of BatchNepal.com). Project source code is licensed under the MIT license.
