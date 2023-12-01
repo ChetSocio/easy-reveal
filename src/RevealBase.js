@@ -85,10 +85,7 @@ class RevealBase extends React.Component {
     super(props, context);
     this.isOn = props.when !== undefined ? !!props.when : true;
     this.state = {
-      collapse: props.collapse //&& (props.appear || (context.transitionGroup&&!context.transitionGroup.isMounting))
-        ? RevealBase.getInitialCollapseStyle(props)
-        : void 0,
-      style: {
+      collapse: props.collapse ? RevealBase.getInitialCollapseStyle(props) : void 0, style: {
         opacity: (!this.isOn || props.ssrReveal) && props.outEffect ? 0 : void 0,
         //visibility: props.when  ? 'visible' : 'hidden',
       },
@@ -369,7 +366,7 @@ class RevealBase extends React.Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (props.when !== undefined)
       this.isOn = !!props.when;
     if (props.fraction !== this.props.fraction)

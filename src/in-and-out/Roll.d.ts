@@ -1,7 +1,8 @@
+
 import * as React from 'react';
 
 
-interface BounceProps {
+interface RollProps {
   out?: boolean;
   left?: boolean;
   right?: boolean;
@@ -18,6 +19,6 @@ interface BounceProps {
 }
 
 
-declare const Bounce: React.FC<BounceProps>
+declare const Roll: React.FC<RollProps>
 
-export default Bounce;
+export default Roll;

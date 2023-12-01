@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-interface FadeProps  {
+
+interface SlideProps {
   out?: boolean,
   left?: boolean,
   right?: boolean,
@@ -11,15 +12,13 @@ interface FadeProps  {
   opposite?: boolean,
   duration?: number,
   timeout?: number,
-  distance?: string,
   delay?: number,
   count?: number,
   forever?: boolean,
-  children?: React.ReactNode;
+  children?:React.ReactNode
 }
 
 
+declare const Slide: React.FC<SlideProps>
 
-declare const Fade: React.FC<FadeProps>
-
-export default Fade;
+export default Slide;

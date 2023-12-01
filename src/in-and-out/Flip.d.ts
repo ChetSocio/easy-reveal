@@ -1,7 +1,8 @@
+
 import * as React from 'react';
 
 
-interface BounceProps {
+interface FlipProps {
   out?: boolean;
   left?: boolean;
   right?: boolean;
@@ -18,6 +19,6 @@ interface BounceProps {
 }
 
 
-declare const Bounce: React.FC<BounceProps>
+declare const Flip: React.FC<FlipProps>
 
-export default Bounce;
+export default Flip;

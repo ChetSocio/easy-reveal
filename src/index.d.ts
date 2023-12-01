@@ -4,12 +4,6 @@
 
 import * as React from 'react';
 
-export { default as Wrap} from './lib/wrap';
-export * from './wrap';
-
-export {default  as Hamburger } from './lib/hamburger';
-export * from './src/lib/hamburger';
-
 export {default as Bounce} from './in-and-out/Bounce';
 export * from './in-and-out/Bounce';
 

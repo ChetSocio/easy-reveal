@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 
-interface BounceProps {
+interface RotateProps {
   out?: boolean;
   left?: boolean;
   right?: boolean;
@@ -18,6 +18,6 @@ interface BounceProps {
 }
 
 
-declare const Bounce: React.FC<BounceProps>
+declare const Rotate: React.FC<RotateProps>
 
-export default Bounce;
+export default Rotate;

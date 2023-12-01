@@ -12,22 +12,21 @@ import wrap from '../lib/wrap';
 import { bool, number } from 'prop-types';
 import { animation, defaults } from '../lib/globals';
 
-const
-  propTypes = {
-    out: bool,
-    left: bool,
-    right: bool,
-    top: bool,
-    bottom: bool,
-    big: bool,
-    mirror: bool,
-    opposite: bool,
-    duration: number,
-    timeout: number,
-    delay: number,
-    count: number,
-    forever: bool,
-  };
+const propTypes = {
+  out: bool,
+  left: bool,
+  right: bool,
+  top: bool,
+  bottom: bool,
+  big: bool,
+  mirror: bool,
+  opposite: bool,
+  duration: number,
+  timeout: number,
+  delay: number,
+  count: number,
+  forever: bool,
+};
 
 const lookup = {};
 function make(reverse, { left, right, up, down, top, bottom, big, mirror, opposite, }) {
