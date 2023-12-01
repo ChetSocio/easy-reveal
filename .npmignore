@@ -5,3 +5,4 @@ gulpfile.js
 npm-debug.log
 node_modules
 __tests__
+src

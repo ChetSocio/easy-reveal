@@ -3,7 +3,7 @@
 This package will be live soon. Please wait till then. Weare testing its compatibility with
  nextjs and typescript for now. 
 
-Easy reveal is the updated (by Chetraj Gautam) version of react-reveal package and is an animation framework for React. It's MIT licensed, has a tiny footprint and written specifically for React in ES6. It can be used to create various cool reveal on scroll animations in your application. If you liked this package, don't forget to star the Github repository. 
+Easy reveal is the updated (by Chetraj Gautam) version of react-reveal package and is an animation framework for React. It's MIT licensed, has a tiny footprint and written specifically for React in ES5. It can be used to create various cool reveal on scroll animations in your application. If you liked this package, don't forget to star the Github repository. 
 
 It also supports nextjs app directory as well as React 18
 

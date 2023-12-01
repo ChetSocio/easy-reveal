@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
-    "declaration": true
-    // ... other compiler options
+    "target": "es5",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "outDir": "./dist"
   },
-  "include": ["index.d.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": ["src/**/*.ts", "src/**/*.js"],
+  "exclude": ["node_modules"]
 }

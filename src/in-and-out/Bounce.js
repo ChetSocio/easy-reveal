@@ -12,21 +12,30 @@ import { bool, number } from 'prop-types';
 import wrap from '../lib/wrap';
 import { animation, defaults } from '../lib/globals';
 
-const
-  propTypes = {
-    out: bool,
-    left: bool,
-    right: bool,
-    top: bool,
-    bottom: bool,
-    mirror: bool,
-    opposite: bool,
-    duration: number,
-    timeout: number,
-    delay: number,
-    count: number,
-    forever: bool,
-  };
+const propTypes = {
+  out: bool,
+  left: bool,
+  right: bool,
+  top: bool,
+  bottom: bool,
+  mirror: bool,
+  opposite: bool,
+  duration: number,
+  timeout: number,
+  delay: number,
+  count: number,
+  forever: bool,
+};
+
+
+/**
+ * Bounce Component
+ * This is a React component that provides a bouncing animation effect.
+ *
+ * // Example usage of Bounce component
+ * <Bounce />
+ *
+ */
 
 const lookup = {};
 function make(reverse, { left, right, up, down, top, bottom, mirror, opposite, }) {

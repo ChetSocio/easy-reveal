@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+
 interface BounceProps {
   out?: boolean;
   left?: boolean;
@@ -13,8 +14,8 @@ interface BounceProps {
   delay?: number;
   count?: number;
   forever?: boolean;
-  children?: React.ReactNode;
 }
+
 
 declare class Bounce extends React.Component<BounceProps> {
   render(): JSX.Element;
