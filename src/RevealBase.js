@@ -6,23 +6,23 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-
+"use client"
 import React from 'react';
+
 import { string, object, number, bool, func, oneOfType, oneOf, shape, element } from 'prop-types';
 import { namespace, ssr, disableSsr, globalHide, hideAll, cascade, collapseend, fadeOutEnabled, observerMode, raf } from './lib/globals';
 //import Step from './lib/Step';
 //import throttle from './lib/throttle';
 
-const
-  inOut = shape({
-    make: func,
-    duration: number.isRequired,
-    delay: number.isRequired,
-    forever: bool,
-    count: number.isRequired,
-    style: object.isRequired,
-    reverse: bool,
-  }),
+const inOut = shape({
+  make: func,
+  duration: number.isRequired,
+  delay: number.isRequired,
+  forever: bool,
+  count: number.isRequired,
+  style: object.isRequired,
+  reverse: bool,
+}),
   propTypes = {
     //when: any,
     //spy: any,
@@ -75,51 +75,84 @@ const
 //  transitionGroup: ()=>{},
 //};
 
+
 class RevealBase extends React.Component {
 
   //getChildContext() {
   //  return { transitionGroup: null }; // allows for nested Transitions
   //}
 
-  constructor(props, context) {
-    super(props, context);
+  // constructor(props, context) {
+  //   super(props, context);
+  //   this.isOn = props.when !== undefined ? !!props.when : true;
+  //   this.state = {
+  //     collapse: props.collapse ? RevealBase.getInitialCollapseStyle(props) : void 0, style: {
+  //       opacity: (!this.isOn || props.ssrReveal) && props.outEffect ? 0 : void 0,
+  //       //visibility: props.when  ? 'visible' : 'hidden',
+  //     },
+  //   };
+  //   this.savedChild = false;
+  //   //this.isListener = false;
+  //   this.isShown = false;
+  //   //this.ticking = false;
+  //   //this.observerMode = observerMode && !this.props.disableObserver;
+  //   if (!observerMode) {
+  //     this.revealHandler = this.makeHandler(this.reveal);
+  //     this.resizeHandler = this.makeHandler(this.resize);
+  //   }
+  //   else
+  //     this.handleObserve = this.handleObserve.bind(this);
+  //   //this.revealHandler = myThrottle(this.reveal.bind(this, false));
+  //   //this.revealHandler = rafThrottle(this.reveal.bind(this, false));
+  //   //this.revealHandler = rafThrottle(throttle(this.reveal.bind(this, false), 66));
+  //   //this.revealHandler = throttle(rafThrottle(this.reveal.bind(this, false)), 66);
+  //   //this.resizeHandler = throttle(this.resize.bind(this), 500);
+  //   this.saveRef = this.saveRef.bind(this);
+  // }  //depreciated context
+
+  constructor(props) {
+    super(props);
+
     this.isOn = props.when !== undefined ? !!props.when : true;
+
     this.state = {
-      collapse: props.collapse ? RevealBase.getInitialCollapseStyle(props) : void 0, style: {
-        opacity: (!this.isOn || props.ssrReveal) && props.outEffect ? 0 : void 0,
-        //visibility: props.when  ? 'visible' : 'hidden',
+      collapse: props.collapse ? RevealBase.getInitialCollapseStyle(props) : undefined,
+      style: {
+        opacity: (!this.isOn || props.ssrReveal) && props.outEffect ? 0 : undefined,
       },
     };
+
     this.savedChild = false;
-    //this.isListener = false;
     this.isShown = false;
-    //this.ticking = false;
-    //this.observerMode = observerMode && !this.props.disableObserver;
+
     if (!observerMode) {
       this.revealHandler = this.makeHandler(this.reveal);
       this.resizeHandler = this.makeHandler(this.resize);
-    }
-    else
+    } else {
       this.handleObserve = this.handleObserve.bind(this);
-    //this.revealHandler = myThrottle(this.reveal.bind(this, false));
-    //this.revealHandler = rafThrottle(this.reveal.bind(this, false));
-    //this.revealHandler = rafThrottle(throttle(this.reveal.bind(this, false), 66));
-    //this.revealHandler = throttle(rafThrottle(this.reveal.bind(this, false)), 66);
-    //this.resizeHandler = throttle(this.resize.bind(this), 500);
+    }
+
     this.saveRef = this.saveRef.bind(this);
   }
 
-
-  saveRef(node) {
-    if (this.childRef)
-      this.childRef(node);
-    if (this.props.innerRef)
-      this.props.innerRef(node);
-    if (this.el !== node) { //probably redundant check
-      this.el = node && ('offsetHeight' in node) ? node : undefined;
-      this.observe(this.props, true);
+  saveRef = (node) => {
+    if (childRef.current) childRef.current(node);
+    if (props.innerRef) props.innerRef(node);
+    if (elRef.current !== node) {
+      elRef.current = node && 'offsetHeight' in node ? node : undefined;
+      observe(props, true);
     }
-  }
+  };
+  // saveRef(node) {
+  //   if (this.childRef)
+  //     this.childRef(node);
+  //   if (this.props.innerRef)
+  //     this.props.innerRef(node);
+  //   if (this.el !== node) { //probably redundant check
+  //     this.el = node && ('offsetHeight' in node) ? node : undefined;
+  //     this.observe(this.props, true);
+  //   }
+  // }
 
   invisible() {
     if (!this || !this.el)

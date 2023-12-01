@@ -21,7 +21,7 @@ npm install easy-reveal --save
 
 ## Quick Start
 
-Import effects from [React Reveal](https://www.npmjs.com/package/easy-reveal) to your project. Lets try `Zoom` effect first:
+Import effects from [Easy Reveal](https://www.npmjs.com/package/easy-reveal) to your project. Lets try `Zoom` effect first:
 
 ```javascript
 "use client" //in nextjs-14
