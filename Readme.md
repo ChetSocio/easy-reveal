@@ -1,16 +1,11 @@
 # Easy-Reveal ! (In Beta 🚀🚀)
 
-This package will be live soon. Please wait till then. We are still testing its compatibility with
- nextjs and typescript for now.  But you can play it it and raise issues in github 😊
+This package will be live soon. Please wait till tthen. We are still testing its compatibility with
+ nextjs and typescript for now.  But you can play with it and raise issues in github 😊
 
 Easy reveal is the created & managed by Chetraj Gautam is an animation framework for React and Nextjs. It's MIT licensed, has a tiny footprint and written specifically for React in ES5. It can be used to create various cool reveal on scroll animations in your application. If you liked this package, don't forget to star the Github repository. 
 
 It also supports nextjs app directory as well as React 18
-
-## Search Engine Visibility 
-
-`easy-reveal` is regularly checked against googlebot in the Google Search Console to make sure that googlebot can see the content in the revealed elements. 
-
 
 ## Installation
 
@@ -29,6 +24,7 @@ npm install easy-reveal --save
 Import effects from [React Reveal](https://www.npmjs.com/package/easy-reveal) to your project. Lets try `Zoom` effect first:
 
 ```javascript
+"use client" //in nextjs-14
 import Zoom from 'easy-reveal';
 ```
 
@@ -120,8 +116,7 @@ If you don't want this to happen, you should wrap multiple children in a `div` t
 
 ## Server Side Rendering
 
-`easy-reveal` supports server side rendering out of the box. Its rtested with nextjs 14 and typescript and 
-it works well out of the box. Love it? Theb give some stars in github  
+`easy-reveal` doesnot supports server side rendering out of the box.  
 ## Forking This Package
 
 Clone the this repository using the following command:

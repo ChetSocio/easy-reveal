@@ -366,25 +366,60 @@ class RevealBase extends React.Component {
     };
   }
 
-  UNSAFE_componentWillReceiveProps(props) {
-    if (props.when !== undefined)
+  // UNSAFE_componentWillReceiveProps(props) {
+  //   if (props.when !== undefined)
+  //     this.isOn = !!props.when;
+  //   if (props.fraction !== this.props.fraction)
+  //     this.observe(props, true);
+  //   if (!this.isOn && props.onExited && ('exit' in props) && props.exit === false) {
+  //     props.onExited();
+  //     return;
+  //   }
+  //   if (props.disabled)
+  //     return;
+  //   if (props.collapse && !this.props.collapse) {
+  //     this.setState({ style: {}, collapse: RevealBase.getInitialCollapseStyle(props) });
+  //     this.isShown = false;
+  //   }
+  //   if ((props.when !== this.props.when) || (props.spy !== this.props.spy))
+  //     this.reveal(props);
+  //   if (this.onRevealTimeout && !this.isOn)
+  //     this.onRevealTimeout = window.clearTimeout(this.onRevealTimeout);
+  // }  commented due to depreciated code
+
+  componentDidUpdate(props) {   // changed componentWillmount to componentDidupdate
+    // Access current props using props
+    if (props.when !== undefined) {
       this.isOn = !!props.when;
-    if (props.fraction !== this.props.fraction)
+    }
+
+    // Access previous props using props directly
+    if (props.fraction !== this.props.fraction) {
       this.observe(props, true);
+    }
+
+    // Additional logic based on prop changes
     if (!this.isOn && props.onExited && ('exit' in props) && props.exit === false) {
       props.onExited();
       return;
     }
-    if (props.disabled)
+
+    if (props.disabled) {
       return;
+    }
+
     if (props.collapse && !this.props.collapse) {
       this.setState({ style: {}, collapse: RevealBase.getInitialCollapseStyle(props) });
       this.isShown = false;
     }
-    if ((props.when !== this.props.when) || (props.spy !== this.props.spy))
+
+    if ((props.when !== this.props.when) || (props.spy !== this.props.spy)) {
       this.reveal(props);
-    if (this.onRevealTimeout && !this.isOn)
+    }
+
+    if (this.onRevealTimeout && !this.isOn) {
       this.onRevealTimeout = window.clearTimeout(this.onRevealTimeout);
+    }
   }
 
   getChild() {
