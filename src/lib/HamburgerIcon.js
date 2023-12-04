@@ -1,5 +1,5 @@
 /*
- * HamburgerIcon Component Service For react-reveal
+ * HamburgerIcon Component Service For easy-reveal
  *
  * Copyright © Chetraj Gautam 2023
  * SVG animation adapted from https://codepen.io/cwmanning/pen/zaCHB

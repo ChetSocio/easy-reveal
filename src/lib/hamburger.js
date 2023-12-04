@@ -1,5 +1,5 @@
 /*
- * Hamburger Higher Order Component For react-reveal
+ * Hamburger Higher Order Component For easy-reveal
  *
  * Copyright © Chetraj Gautam 2023
  *

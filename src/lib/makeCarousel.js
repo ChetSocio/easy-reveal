@@ -1,5 +1,5 @@
 /*
- * makeCarousel Higher Order Component For react-reveal
+ * makeCarousel Higher Order Component For easy-reveal
  *
  * Copyright © Chetraj Gautam 2023
  *

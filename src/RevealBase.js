@@ -1,12 +1,11 @@
 /*
- * RevealBase Component For react-reveal
+ * RevealBase Component For easy-reveal
  *
  * Copyright © chetraj gautam
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
-"use client"
 import React from 'react';
 
 import { string, object, number, bool, func, oneOfType, oneOf, shape, element } from 'prop-types';
@@ -82,46 +81,17 @@ class RevealBase extends React.Component {
   //  return { transitionGroup: null }; // allows for nested Transitions
   //}
 
-  // constructor(props, context) {
-  //   super(props, context);
-  //   this.isOn = props.when !== undefined ? !!props.when : true;
-  //   this.state = {
-  //     collapse: props.collapse ? RevealBase.getInitialCollapseStyle(props) : void 0, style: {
-  //       opacity: (!this.isOn || props.ssrReveal) && props.outEffect ? 0 : void 0,
-  //       //visibility: props.when  ? 'visible' : 'hidden',
-  //     },
-  //   };
-  //   this.savedChild = false;
-  //   //this.isListener = false;
-  //   this.isShown = false;
-  //   //this.ticking = false;
-  //   //this.observerMode = observerMode && !this.props.disableObserver;
-  //   if (!observerMode) {
-  //     this.revealHandler = this.makeHandler(this.reveal);
-  //     this.resizeHandler = this.makeHandler(this.resize);
-  //   }
-  //   else
-  //     this.handleObserve = this.handleObserve.bind(this);
-  //   //this.revealHandler = myThrottle(this.reveal.bind(this, false));
-  //   //this.revealHandler = rafThrottle(this.reveal.bind(this, false));
-  //   //this.revealHandler = rafThrottle(throttle(this.reveal.bind(this, false), 66));
-  //   //this.revealHandler = throttle(rafThrottle(this.reveal.bind(this, false)), 66);
-  //   //this.resizeHandler = throttle(this.resize.bind(this), 500);
-  //   this.saveRef = this.saveRef.bind(this);
-  // }  //depreciated context
-
   constructor(props) {
     super(props);
 
-    this.isOn = props.when !== undefined ? !!props.when : true;
-
     this.state = {
-      collapse: props.collapse ? RevealBase.getInitialCollapseStyle(props) : undefined,
+      collapse: props.collapse ? this.getInitialCollapseStyle(props) : undefined,
       style: {
         opacity: (!this.isOn || props.ssrReveal) && props.outEffect ? 0 : undefined,
       },
     };
 
+    this.isOn = props.when !== undefined ? !!props.when : true;
     this.savedChild = false;
     this.isShown = false;
 
@@ -135,24 +105,17 @@ class RevealBase extends React.Component {
     this.saveRef = this.saveRef.bind(this);
   }
 
-  saveRef = (node) => {
-    if (childRef.current) childRef.current(node);
-    if (props.innerRef) props.innerRef(node);
-    if (elRef.current !== node) {
-      elRef.current = node && 'offsetHeight' in node ? node : undefined;
-      observe(props, true);
+
+  saveRef(node) {
+    if (this.childRef)
+      this.childRef(node);
+    if (this.props.innerRef)
+      this.props.innerRef(node);
+    if (this.el !== node) { //probably redundant check
+      this.el = node && ('offsetHeight' in node) ? node : undefined;
+      this.observe(this.props, true);
     }
-  };
-  // saveRef(node) {
-  //   if (this.childRef)
-  //     this.childRef(node);
-  //   if (this.props.innerRef)
-  //     this.props.innerRef(node);
-  //   if (this.el !== node) { //probably redundant check
-  //     this.el = node && ('offsetHeight' in node) ? node : undefined;
-  //     this.observe(this.props, true);
-  //   }
-  // }
+  }
 
   invisible() {
     if (!this || !this.el)
@@ -399,26 +362,6 @@ class RevealBase extends React.Component {
     };
   }
 
-  // UNSAFE_componentWillReceiveProps(props) {
-  //   if (props.when !== undefined)
-  //     this.isOn = !!props.when;
-  //   if (props.fraction !== this.props.fraction)
-  //     this.observe(props, true);
-  //   if (!this.isOn && props.onExited && ('exit' in props) && props.exit === false) {
-  //     props.onExited();
-  //     return;
-  //   }
-  //   if (props.disabled)
-  //     return;
-  //   if (props.collapse && !this.props.collapse) {
-  //     this.setState({ style: {}, collapse: RevealBase.getInitialCollapseStyle(props) });
-  //     this.isShown = false;
-  //   }
-  //   if ((props.when !== this.props.when) || (props.spy !== this.props.spy))
-  //     this.reveal(props);
-  //   if (this.onRevealTimeout && !this.isOn)
-  //     this.onRevealTimeout = window.clearTimeout(this.onRevealTimeout);
-  // }  commented due to depreciated code
 
   componentDidUpdate(props) {   // changed componentWillmount to componentDidupdate
     // Access current props using props
@@ -499,8 +442,8 @@ class RevealBase extends React.Component {
     const el = React.cloneElement(child, props, mount ? newChildren || children : undefined);
     if (this.props.collapse !== undefined)
       return this.props.collapseEl
-        ? React.cloneElement(this.props.collapseEl, { style: { ...this.props.collapseEl.style, ...(this.props.disabled ? undefined : this.state.collapse) }, children: (el) })
-        : <div style={this.props.disabled ? undefined : this.state.collapse} children={el} />;
+        ? React.cloneElement(this.props.collapseEl, { className:'overflow-stop-div' ,style: { ...this.props.collapseEl.style, ...(this.props.disabled ? undefined : this.state.collapse) }, children: (el) })
+        : <div className='overflow-stop-div' style={this.props.disabled ? undefined : this.state.collapse} children={el} />;
     //return <div {...this.props.collapse} style={ this.props.disabled ? undefined : this.state.collapse } children={el} />;
     return el;
   }

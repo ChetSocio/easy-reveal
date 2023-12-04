@@ -1,5 +1,5 @@
 /*
- * withReveal Auxiliary Function For Making react-reveal Higher Order Components
+ * withReveal Auxiliary Function For Making easy-reveal Higher Order Components
  *
  * Copyright © Chetraj Gautam 2023
  *

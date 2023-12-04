@@ -1,5 +1,5 @@
 /*
- * React-reveal Global Helpers
+ * easy-reveal Global Helpers
  *
  * Copyright © Chetraj Gautam 2023
  *
@@ -9,7 +9,7 @@
 
 //import {version} from 'react';
 
-export const namespace = 'react-reveal';//, is16 = parseInt(version, 10) >= 16;
+export const namespace = 'easy-reveal';//, is16 = parseInt(version, 10) >= 16;
 export const defaults = { duration: 1000, delay: 0, count: 1, };
 
 export let
@@ -29,7 +29,7 @@ export function insertRule(rule) {
     return sheet.insertRule(rule, sheet.cssRules.length);
   }
   catch (e) {
-    console.warn('react-reveal - animation failed');
+    console.warn('easy-reveal - animation failed');
   }
 }
 
@@ -60,33 +60,37 @@ export function hideAll() {
   window.document.removeEventListener('visibilitychange', hideAll);
 }
 
-//navigator.userAgent.includes("Node.js") || navigator.userAgent.includes("jsdom")
-if (typeof window !== 'undefined' && window.name !== 'nodejs' && window.document && typeof navigator !== 'undefined') { // are we in browser?
+if (typeof window !== 'undefined' && window.document && typeof navigator !== 'undefined') {
   observerMode = 'IntersectionObserver' in window
     && 'IntersectionObserverEntry' in window  // bypassing
     && 'intersectionRatio' in window.IntersectionObserverEntry.prototype // inclomplete implementations
     && (/\{\s*\[native code\]\s*\}/).test('' + IntersectionObserver); // and buggy polyfills
+
+
+
   raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || raf;
-  ssr = window.document.querySelectorAll('div[data-reactroot]').length > 0; // are we prerendered?
-  if (navigator.appVersion.indexOf("MSIE 10") !== -1)
-    ie10 = true;
-  //if (ssr && 'serviceWorker' in navigator && navigator.serviceWorker.controller) //cached by service worker?
-  //  ssr = false;
-  //console.log(Date.now() - window.performance.timing.domLoading<500);
-  if (ssr && 'performance' in window
-    && 'timing' in window.performance
-    && 'domContentLoadedEventEnd' in window.performance.timing
-    && window.performance.timing.domLoading
-    && Date.now() - window.performance.timing.domLoading < 300)
+
+  let ssr = window.document.querySelectorAll('div[data-reactroot]').length > 0;
+
+  ie10 = navigator.userAgent.indexOf("MSIE 10") !== -1;
+
+
+  if (ssr && 'performance' in window &&
+    'now' in window.performance &&
+    Date.now() - window.performance.now() < 300)
     ssr = false;
+
   if (ssr)
     window.setTimeout(disableSsr, 1500);
+
   if (!observerMode) {
     collapseend = document.createEvent('Event');
     collapseend.initEvent('collapseend', true, true);
   }
+
   let element = document.createElement('style');
   document.head.appendChild(element);
+
   if (element.sheet && element.sheet.cssRules && element.sheet.insertRule) {
     sheet = element.sheet;
     window.addEventListener('scroll', hideAll, true);

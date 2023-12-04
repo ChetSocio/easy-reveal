@@ -1,5 +1,5 @@
 /*
- * Animation Component For react-reveal
+ * Animation Component For easy-reveal
  *
  * Copyright © Chetraj Gautam 2023
  *

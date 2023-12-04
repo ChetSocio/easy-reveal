@@ -1,5 +1,5 @@
 /*
- * responsive Higher Order Component For react-reveal
+ * responsive Higher Order Component For easy-reveal
  *
  * Copyright © Chetraj Gautam 2023
  *
